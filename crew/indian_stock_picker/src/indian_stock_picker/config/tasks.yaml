@@ -1,0 +1,27 @@
+find_short_term_stocks:
+  description: >
+    Find 1–2 short‑term Indian stocks trending in news (past 2–3 days) likely to gain 1–3%.
+  expected_output: >
+    List of short‑term stock tickers, names, and why they’re hot.
+  agent: trending_stock_finder
+  output_file: output/short_term_stocks.json
+
+find_long_term_stocks:
+  description: >
+    Find 1–2 long‑term Indian stocks with strong fundamentals for 4–5 year growth.
+  expected_output: >
+    List of long‑term stock tickers, names, and fundamental thesis.
+  agent: fundamental_stock_finder
+  output_file: output/long_term_stocks.json
+
+pick_two_stocks:
+  description: >
+    From the short‑term and long‑term lists, pick one of each. Send a push notification
+    to the user with the decision and a one‑sentence rationale, then output a detailed report.
+  expected_output: >
+    The chosen short‑term and long‑term stocks with rationale, plus brief notes on skips.
+  agent: stock_picker
+  context:
+    - find_short_term_stocks
+    - find_long_term_stocks
+  output_file: output/decision.md
