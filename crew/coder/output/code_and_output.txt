@@ -1,0 +1,31 @@
+```python
+def two_sum(nums, target):
+    # Create a dictionary to store the complement and index
+    num_dict = {}
+    
+    # Iterate over the array
+    for index, num in enumerate(nums):
+        # Calculate the complement needed to reach the target
+        complement = target - num
+        
+        # Check if complement is already in dictionary
+        if complement in num_dict:
+            # Return indices of the two numbers
+            return [num_dict[complement], index]
+        
+        # Store the index of the current number
+        num_dict[num] = index
+
+# Example usage
+nums = [2, 7, 11, 15]
+target = 9
+result = two_sum(nums, target)
+
+# Print the result
+print(result)
+```
+
+Output:
+```
+[0, 1]
+```
